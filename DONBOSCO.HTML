@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Don Bosco | El Santo de los Jóvenes</title>
+
+  <!-- Bootstrap 5 -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet"
+  >
+
+  <!-- Bootstrap Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --azul: #0b2d4d;
+      --azul-claro: #1769aa;
+      --dorado: #d4a63c;
+      --crema: #fffaf0;
+      --blanco: #ffffff;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background-color: var(--crema);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(11, 45, 77, 0.97);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand i {
+      color: var(--dorado);
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--dorado) !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          rgba(5, 25, 43, 0.72),
+          rgba(5, 25, 43, 0.80)
+        ),
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2000&q=80")
+        center/cover;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+    }
+
+    .hero h1 span {
+      color: var(--dorado);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #e9eef3;
+    }
+
+    .btn-dorado {
+      background-color: var(--dorado);
+      color: white;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-dorado:hover {
+      background-color: #b88d29;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline-light {
+      border-radius: 50px;
+      padding: 12px 27px;
+    }
+
+    /* TITULOS */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--azul);
+      font-size: 2.7rem;
+    }
+
+    .gold-line {
+      width: 70px;
+      height: 4px;
+      background: var(--dorado);
+      border-radius: 10px;
+      margin: 15px auto 40px;
+    }
+
+    /* HISTORIA */
+    .history-img {
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .history-text {
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* TARJETAS */
+    .feature-card {
+      border: none;
+      border-radius: 20px;
+      padding: 35px 25px;
+      height: 100%;
+      background: white;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      transition: 0.35s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.14);
+    }
+
+    .icon-box {
+      width: 75px;
+      height: 75px;
+      background: #eef5fb;
+      color: var(--azul-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+
+    .feature-card h4 {
+      color: var(--azul);
+      font-weight: 700;
+    }
+
+    /* FRASE */
+    .quote-section {
+      background:
+        linear-gradient(135deg, rgba(11,45,77,.96), rgba(23,105,170,.9));
+      color: white;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-icon {
+      font-size: 4rem;
+      color: var(--dorado);
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* VALORES */
+    .value-item {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      height: 100%;
+      border-left: 5px solid var(--dorado);
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    }
+
+    .value-item h5 {
+      color: var(--azul);
+      font-weight: 700;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: var(--dorado);
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding: 20px 40px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-dot {
+      width: 18px;
+      height: 18px;
+      background: var(--azul);
+      border: 4px solid var(--dorado);
+      border-radius: 50%;
+      position: absolute;
+      top: 25px;
+      right: -9px;
+      z-index: 2;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -9px;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.07);
+    }
+
+    .timeline-content h5 {
+      color: var(--azul);
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #061d32;
+      color: #ccd7e0;
+    }
+
+    footer h4 {
+      color: white;
+      font-weight: 700;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: white;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px;
+      transition: .3s;
+    }
+
+    .social-icon:hover {
+      background: var(--dorado);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .history-img {
+        height: 300px;
+        margin-bottom: 30px;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding-left: 40px;
+      }
+
+      .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 1px;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-cross"></i>
+        DON BOSCO
+      </a>
+
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#inicio">Inicio</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#historia">Historia</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#valores">Valores</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#legado">Legado</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+
+        <p class="text-uppercase fw-bold mb-3" style="color:#d4a63c;">
+          Santo de los jóvenes
+        </p>
+
+        <h1>
+          San <span>Juan Bosco</span>
+        </h1>
+
+        <p class="mt-4">
+          Un sacerdote, educador y santo que dedicó su vida a acompañar,
+          educar y dar esperanza a los jóvenes, especialmente a quienes
+          más lo necesitaban.
+        </p>
+
+        <div class="mt-4 d-flex gap-3 flex-wrap">
+
+          <a href="#historia" class="btn btn-dorado">
+            Conocer su historia
+          </a>
+
+          <a href="#valores" class="btn btn-outline-light">
+            Sus valores
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- HISTORIA -->
+  <section id="historia" class="py-5">
+    <div class="container py-5">
+
+      <div class="text-center mb-5">
+        <p class="text-uppercase fw-bold" style="color:#d4a63c;">
+          Una vida dedicada a los jóvenes
+        </p>
+
+        <h2 class="section-title">
+          ¿Quién fue Don Bosco?
+        </h2>
+
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6">
+
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Don_Bosco.jpg/800px-Don_Bosco.jpg"
+            alt="Don Bosco"
+            class="history-img"
+          >
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <h3 class="fw-bold mb-4" style="color:#0b2d4d;">
+            Un educador con una misión
+          </h3>
+
+          <p class="history-text">
+            San Juan Bosco nació en 1815 en Castelnuovo d'Asti, Italia.
+            Desde joven sintió una profunda vocación de servicio y,
+            después de convertirse en sacerdote, dedicó gran parte de
+            su vida a la educación y acompañamiento de los jóvenes.
+          </p>
+
+          <p class="history-text">
+            Su propuesta educativa buscaba crear un ambiente basado en
+            la razón, la religión y el cariño. Para Don Bosco, educar
+            significaba acompañar al joven, confiar en él y ayudarlo
+            a descubrir sus capacidades.
+          </p>
+
+          <div class="mt-4">
+            <span class="badge rounded-pill text-bg-primary p-2 px-3 me-2">
+              Educación
+            </span>
+
+            <span class="badge rounded-pill p-2 px-3 me-2"
+              style="background:#d4a63c;">
+              Juventud
+            </span>
+
+            <span class="badge rounded-pill text-bg-dark p-2 px-3">
+              Servicio
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VALORES -->
+  <section id="valores" class="py-5 bg-light">
+
+    <div class="container py-5">
+
+      <div class="text-center mb-5">
+
+        <p class="text-uppercase fw-bold" style="color:#d4a63c;">
+          Su manera de educar
+        </p>
+
+        <h2 class="section-title">
+          El Sistema Preventivo
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p class="text-muted mx-auto" style="max-width:700px;">
+          La propuesta educativa de Don Bosco se apoyaba especialmente
+          en tres pilares.
+        </p>
+
+      </div>
+
+      <div class="row g-4">
+
+        <!-- RAZÓN -->
+        <div class="col-md-4">
+
+          <div class="feature-card text-center">
+
+            <div class="icon-box">
+              <i class="bi bi-lightbulb"></i>
+            </div>
+
+            <h4>Razón</h4>
+
+            <p class="text-muted mt-3">
+              Educar mediante el diálogo, el sentido común y la comprensión,
+              ayudando a los jóvenes a tomar decisiones responsables.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- RELIGIÓN -->
+        <div class="col-md-4">
+
+          <div class="feature-card text-center">
+
+            <div class="icon-box">
+              <i class="bi bi-heart"></i>
+            </div>
+
+            <h4>Religión</h4>
+
+            <p class="text-muted mt-3">
+              Promover una vida espiritual basada en la fe, la esperanza,
+              el amor y el compromiso con los demás.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- AMOR -->
+        <div class="col-md-4">
+
+          <div class="feature-card text-center">
+
+            <div class="icon-box">
+              <i class="bi bi-people"></i>
+            </div>
+
+            <h4>Amabilidad</h4>
+
+            <p class="text-muted mt-3">
+              Estar cerca de los jóvenes, acompañarlos y crear un ambiente
+              donde se sintieran valorados y queridos.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FRASE -->
+  <section class="quote-section text-center">
+
+    <div class="container">
+
+      <i class="bi bi-quote quote-icon"></i>
+
+      <p class="quote-text mt-4">
+        "No basta amar a los jóvenes, es necesario que ellos
+        se den cuenta de que son amados."
+      </p>
+
+      <p class="mt-4 mb-0 fw-bold" style="color:#d4a63c;">
+        — Inspirado en la pedagogía de Don Bosco
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- VALORES PERSONALES -->
+  <section class="py-5">
+
+    <div class="container py-5">
+
+      <div class="text-center mb-5">
+
+        <p class="text-uppercase fw-bold" style="color:#d4a63c;">
+          Una inspiración
+        </p>
+
+        <h2 class="section-title">
+          Valores que dejó
+        </h2>
+
+        <div class="gold-line"></div>
+
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="value-item">
+
+            <i class="bi bi-stars fs-1" style="color:#d4a63c;"></i>
+
+            <h5 class="mt-3">Esperanza</h5>
+
+            <p class="text-muted">
+              Confiar en las posibilidades de cada joven.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="value-item">
+
+            <i class="bi bi-heart-fill fs-1" style="color:#d4a63c;"></i>
+
+            <h5 class="mt-3">Amor</h5>
+
+            <p class="text-muted">
+              Acompañar a los demás con cercanía y cariño.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="value-item">
+
+            <i class="bi bi-hand-thumbs-up-fill fs-1" style="color:#d4a63c;"></i>
+
+            <h5 class="mt-3">Servicio</h5>
+
+            <p class="text-muted">
+              Poner las capacidades personales al servicio de otros.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="value-item">
+
+            <i class="bi bi-book-fill fs-1" style="color:#d4a63c;"></i>
+
+            <h5 class="mt-3">Educación</h5>
+
+            <p class="text-muted">
+              Aprender para crecer y construir un mejor futuro.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LINEA DEL TIEMPO -->
+  <section id="legado" class="py-5 bg-light">
+
+    <div class="container py-5">
+
+      <div class="text-center mb-5">
+
+        <p class="text-uppercase fw-bold" style="color:#d4a63c;">
+          Momentos importantes
+        </p>
+
+        <h2 class="section-title">
+          Su camino
+        </h2>
+
+        <div class="gold-line"></div>
+
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h5>1815</h5>
+
+            <p class="mb-0 text-muted">
+              Nace Juan Bosco en I Becchi, cerca de Castelnuovo d'Asti,
+              en el Reino de Cerdeña.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h5>1841</h5>
+
+            <p class="mb-0 text-muted">
+              Es ordenado sacerdote y comienza una etapa decisiva
+              de servicio a los jóvenes.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h5>1859</h5>
+
+            <p class="mb-0 text-muted">
+              Se funda la Sociedad de San Francisco de Sales,
+              conocida como Congregación Salesiana.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h5>1888</h5>
+
+            <p class="mb-0 text-muted">
+              Don Bosco fallece en Turín dejando una obra educativa
+              que continuaría expandiéndose por diferentes países.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="py-5">
+
+    <div class="container py-5">
+
+      <div 
+        class="rounded-4 p-5 text-center text-white"
+        style="
+          background: linear-gradient(135deg,#0b2d4d,#1769aa);
+          box-shadow:0 20px 50px rgba(11,45,77,.2);
+        "
+      >
+
+        <i class="bi bi-people-fill fs-1" style="color:#d4a63c;"></i>
+
+        <h2 class="mt-3 fw-bold">
+          "Buenos cristianos y honrados ciudadanos"
+        </h2>
+
+        <p class="mt-3 mb-0 text-white-50">
+          Una frase que resume parte del ideal educativo asociado
+          a la tradición salesiana.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-5">
+
+    <div class="container">
+
+      <div class="row g-4">
+
+        <div class="col-lg-6">
+
+          <h4>
+            <i class="bi bi-cross" style="color:#d4a63c;"></i>
+            Don Bosco
+          </h4>
+
+          <p class="mt-3">
+            Una página dedicada a conocer la vida, obra y pensamiento
+            de San Juan Bosco y su legado educativo.
+          </p>
+
+        </div>
+
+        <div class="col-lg-6 text-lg-end">
+
+          <h5 class="text-white">
+            Síguenos
+          </h5>
+
+          <div class="mt-3">
+
+            <a href="#" class="social-icon">
+              <i class="bi bi-facebook"></i>
+            </a>
+
+            <a href="#" class="social-icon">
+              <i class="bi bi-instagram"></i>
+            </a>
+
+            <a href="#" class="social-icon">
+              <i class="bi bi-youtube"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="text-center">
+        <small>
+          © 2026 | Página educativa sobre San Juan Bosco
+        </small>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+</body>
+</html>
